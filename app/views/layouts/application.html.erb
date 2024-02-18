@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Tweeter</title>
+ <%= stylesheet_link_tag 'application', media: 'all', 'dataturbolinks-track' => true %>
+ <%= javascript_include_tag 'application', 'data-turbolinkstrack' => true %>
+ <%= csrf_meta_tags %>
+</head>
+<body>
+ <div id="container">
+ <div class="user_nav">
+ <% if session[:user] %>
+ Logged in as <%= session[:user] %>.
+ <%= link_to "Log out", logout_path %>
+ <% else %>
+ <%= link_to "Sign up", signup_path %> or
+ <%= link_to "log in", login_path %>.
+ <% end %>
+ </div>
+ <%= yield %>
+ </div>
+</body>
+</html>

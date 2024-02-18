@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<%# <%= render @user  %> 
+
+<h2> <td>Username: <%= @user.name %></td></h2>
+<% @user.tweets.each do |tweet| %>
+  <tr>
+    <hr/>
+      <td><%= linkify_mentions(tweet.content) %></td>
+      <br/>
+      <b><td>Posted at: <%= tweet.created_at %></td></b>
+      <br/>
+      <b><td>by: <%= linkify_mentions('@' + tweet.user.name) %></td></b>
+    </tr>
+<% end %>
+<hr/>
+<div>
+  <%= link_to "Edit this user", edit_user_path(@user) %> |
+  <%= link_to "Back to users", users_path %>
+
+  <%= button_to "Destroy this user", @user, method: :delete %>
+</div>

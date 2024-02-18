@@ -1,0 +1,12 @@
+<h1>Tweets with Hashtag #<%= params[:hashtag] %></h1>
+
+<% @tweets.each do |tweet| %>
+  <div>
+    <hr/>
+    <p><%=linkify_mentions(tweet.content)%></p>
+    <b><td>Posted at: <%= tweet.created_at %></td></b>
+    <br/>
+    <b><td>by: <%= linkify_mentions('@' + tweet.user.name) %></td></b>
+    <!-- Display other tweet information as needed -->
+  </div>
+<% end %>
